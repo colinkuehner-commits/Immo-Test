@@ -1,1 +1,103 @@
-test
+settings:
+  hide: true
+  content:
+    merge: true
+
+media:
+  - name: stadthaus-bilder
+    label: Bilder – Stadthaus am Park
+    input: public/projekte/stadthaus-am-park
+    output: /projekte/stadthaus-am-park
+    extensions: [jpg, jpeg, png, webp, avif, svg]
+    rename: random
+  - name: neckar-bilder
+    label: Bilder – Wohnung am Neckar
+    input: public/projekte/wohnung-am-neckar
+    output: /projekte/wohnung-am-neckar
+    extensions: [jpg, jpeg, png, webp, avif, svg]
+    rename: random
+
+content:
+  - name: stadthaus-am-park
+    label: Stadthaus am Park
+    type: file
+    path: content/projekte/stadthaus-am-park.json
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    fields:
+      - name: slug
+        type: string
+        required: true
+        hidden: true
+        readonly: true
+      - name: titel
+        label: Titel
+        type: string
+        required: true
+      - name: ort
+        label: Ort
+        type: string
+        required: true
+      - name: wohnflaeche
+        label: Wohnfläche (m²)
+        type: number
+        required: true
+        options:
+          min: 0.01
+      - name: beschreibung
+        label: Beschreibung
+        type: text
+        required: true
+      - name: bilder
+        label: Bildergalerie
+        type: image
+        required: true
+        list:
+          min: 1
+        options:
+          media: stadthaus-bilder
+
+  - name: wohnung-am-neckar
+    label: Wohnung am Neckar
+    type: file
+    path: content/projekte/wohnung-am-neckar.json
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    fields:
+      - name: slug
+        type: string
+        required: true
+        hidden: true
+        readonly: true
+      - name: titel
+        label: Titel
+        type: string
+        required: true
+      - name: ort
+        label: Ort
+        type: string
+        required: true
+      - name: wohnflaeche
+        label: Wohnfläche (m²)
+        type: number
+        required: true
+        options:
+          min: 0.01
+      - name: beschreibung
+        label: Beschreibung
+        type: text
+        required: true
+      - name: bilder
+        label: Bildergalerie
+        type: image
+        required: true
+        list:
+          min: 1
+        options:
+          media: neckar-bilder
